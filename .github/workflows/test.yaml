@@ -206,6 +206,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
       - uses: azure/docker-login@v1
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
@@ -221,8 +224,8 @@ jobs:
           file: ./Dockerfile
           push: false
           platforms: linux/amd64,linux/arm64
-          # cache-from: type=registry,ref=pomerium/pomerium:buildcache
-          # cache-to: type=registry,ref=pomerium/pomerium:buildcache,mode=max
+          cache-from: type=registry,ref=pomerium/pomerium:buildcache
+          cache-to: type=registry,ref=pomerium/pomerium:buildcache,mode=max
 
   precommit:
     runs-on: ubuntu-latest
