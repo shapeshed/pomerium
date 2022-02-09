@@ -220,6 +220,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: false
+          platforms: linux/amd64,linux/arm64
           cache-from: type=registry,ref=pomerium/pomerium:buildcache
           cache-to: type=registry,ref=pomerium/pomerium:buildcache,mode=max
 
