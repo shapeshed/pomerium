@@ -1,6 +1,7 @@
 FROM node:16 as ui
 WORKDIR /build
 
+COPY .git ./.git
 COPY Makefile ./Makefile
 
 # download yarn dependencies
